@@ -1,10 +1,12 @@
 version: '3'
+
 services:
-  python3:
+  app:
+    container_name: FastAPI
     build: .
-    container_name: 'python'
     tty: true
     volumes:
       - .:/app
     ports:
-      - 8080:8080
+      - "9004:9004"
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 9004
